@@ -1,0 +1,266 @@
+/*
+Spacing System (px):
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/*That border like stuff around elements when you press tab key*/
+*:focus {
+  outline: none;
+  /* outline: 4px dotted #e67e22; */
+  /* outline-offset: 8px; */
+  box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  color: #555;
+  /*only works if there is nothing absolutely positioned in relation to body*/
+  overflow-x: hidden;
+}
+strong {
+  font-weight: 500;
+}
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: #e67e22;
+  border-bottom: 1px solid currentColor; /*takes the current text color.*/
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+  color: #cf711f;
+  border-bottom: 1px solid transparent;
+  /*the 1px is part of the element. when removed
+  the page kind of jumps. */
+}
+
+/******************************************/
+/******       REUSABLE GRID         *******/
+/******************************************/
+.grid {
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 6.4rem;
+}
+
+/**The element with the grid class and that grid is not the last child**/
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid--two-column {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--three-column {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--four-column {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--five-column {
+  grid-template-columns: repeat(5, 1fr);
+}
+.grid--center-v {
+  align-items: center;
+}
+/******************************************/
+/******      REUSABLE CONTAINER     *******/
+/******************************************/
+
+.container {
+  /*Another max-width standard value is 1140px*/
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem; /*so that the content is not glued to the sides when width reduces*/
+}
+
+/*******************/
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.9px;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.5;
+  margin-bottom: 9.6rem;
+}
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+.subheading {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #8a4c14;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+
+/******************/
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  line-height: 1.2rem;
+}
+.list-icons {
+  width: 3rem;
+  height: 3rem;
+  fill: #e67e22;
+}
+
+/*A helper class*/
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+.align-center-md {
+  text-align: center;
+}
+
+/*****************/
+
+.btn,
+.btn:link,
+.btn:visited {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem; /* the sides are double the top and bottom */
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 10px;
+  /*trick to add animation between normal state and hover state*/
+  transition: all 0.3s;
+
+  /*only necessary for the .btn*/
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background: #fdf2e9;
+  box-shadow: inset 0 0 0 3px #fff; /*trick to add border inside an element*/
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+/******** FIXING SAFARI FLEXBOX GAP *************/
+
+.no-flexbox-gap .main-nav-list li:not(:last-child) {
+  margin-right: 4.8rem;
+}
+
+.no-flexbox-gap .list-item:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+
+.no-flexbox-gap .list-icon:not(:last-child) {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .delivered-faces {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .meal-attribute:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.no-flexbox-gap .meal-icon {
+  margin-right: 1.6rem;
+}
+
+.no-flexbox-gap .footer-row div:not(:last-child) {
+  margin-right: 6.4rem;
+}
+
+.no-flexbox-gap .social-links li:not(:last-child) {
+  margin-right: 2.4rem;
+}
+
+.no-flexbox-gap .footer-nav li:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 75em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 4.8rem;
+  }
+}
